@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/screens.dart';
 
 part 'app_router.g.dart';
@@ -12,7 +13,7 @@ GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const DesktopScaffold(),//HomeScreenOLD(),
     ),
     GoRoute(
       path: '/provider',
