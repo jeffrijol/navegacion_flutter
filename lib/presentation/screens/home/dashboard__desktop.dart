@@ -1,17 +1,19 @@
+
+import 'package:area_trabajo/presentation/screens/home/home_desktop.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';
+import '../screens.dart';
 
-class DesktopScaffold extends StatefulWidget {
+class DesktopScaffold extends ConsumerWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
 
   @override
-  State<DesktopScaffold> createState() => _DesktopScaffoldState();
-}
-
-class _DesktopScaffoldState extends State<DesktopScaffold> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final root = ref.watch(getrouterProvider);
+    print(root);
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
@@ -23,12 +25,26 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
             // open drawer
             myDrawer,
 
+            if (root == '/')
+               const Flexible(child: HomeDesktop())
+            else if (root == '/future-provider')
+              const Flexible(child: FutureProviderScreen())
+            else if (root == '/records')
+              const Flexible(child: RecordsScreen())
+            else if (root == '/provider-router')
+              const Flexible(child: RouterScreen())
+            else if (root == '/future-family-provider')
+              const Flexible(child: FamilyFutureScreen())
+            else 
+              const StateProviderScreen() 
+ 
             // first half of page
-            Expanded(
+            /* Expanded(
               flex: 2,
               child: Column(
                 children: [
-                  // first 4 boxes in grid
+                  
+                 // first 4 boxes in grid
                   AspectRatio(
                     aspectRatio: 4,
                     child: SizedBox(
@@ -53,12 +69,12 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         return const Tile();
                       },
                     ),
-                  ),
+                  ), 
                 ],
               ),
             ),
             // second half of page
-            Expanded(
+             Expanded(
               child: Column(
                 children: [
                   Padding(
@@ -85,7 +101,8 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                   ),
                 ],
               ),
-            ),
+            ),  */
+           
           ],
         ),
       ),

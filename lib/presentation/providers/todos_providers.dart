@@ -24,12 +24,12 @@ class TodoCurrentFilter extends _$TodoCurrentFilter {
 class Todos extends _$Todos {
   @override
   List<Todo> build() => [
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: null ),
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: DateTime.now() ),
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: null ),
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: DateTime.now() ),
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: null ),
-    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: null ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().subtract(const Duration(days: 7, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco Nacional',completedAt: null ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().subtract(const Duration(days: 5, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco Nacional',completedAt: DateTime.now() ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().subtract(const Duration(days: 1, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco Nacional',completedAt: null ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().add(const Duration(days: 1, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco MUCAP',completedAt: DateTime.now() ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().add(const Duration(days: 10, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco MUCAP',completedAt: null ),
+    Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), expiredDate: DateTime.now().add(const Duration(days: 100, hours: 3, minutes: 43, seconds: 56)), entidad: 'Banco MUCAP',completedAt: null ),
   ];
 
   void toggleTodo(String id) {
@@ -51,7 +51,7 @@ class Todos extends _$Todos {
   void createTodo( String description ) {
     state = [
       ...state, 
-      Todo(id: uuid.v4(), description: description, completedAt: null),
+      Todo(id: uuid.v4(), description: description, expiredDate: DateTime.now().add(const Duration(days: 90, hours: 3, minutes: 43, seconds: 56)), entidad: 'Nueva entidad', completedAt: null),
     ];
   }
 

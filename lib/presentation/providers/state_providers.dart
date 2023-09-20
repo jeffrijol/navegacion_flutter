@@ -35,3 +35,15 @@ class Username extends _$Username {
     state = name;
   }
 }
+
+
+
+@Riverpod(keepAlive: true)
+class Getrouter extends _$Getrouter {
+  @override
+  String build() => '/';
+
+  void changeRouter( String name ) {
+    state = name;
+  }
+}

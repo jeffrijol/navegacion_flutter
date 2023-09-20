@@ -39,7 +39,7 @@ final todoCurrentFilterProvider =
 );
 
 typedef _$TodoCurrentFilter = Notifier<FilterType>;
-String _$todosHash() => r'728023d78e593e7790f52950b8d1f20808643b26';
+String _$todosHash() => r'9d39c93035b9f12f289c141eb21c78a9627b6c8d';
 
 /// See also [Todos].
 @ProviderFor(Todos)

@@ -3,16 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../config/config.dart';
 import '../../providers/providers.dart';
+import '../../widgets/widgets_constants.dart';
 
-class TodoScreen extends ConsumerWidget {
-  const TodoScreen({super.key});
+class RecordsScreen extends ConsumerWidget {
+  const RecordsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('State Provider + Providers'),
+        backgroundColor: Colors.grey[300],
+        title: const Text('Expendientes tramitados'),//Text('State Provider + Providers'),
       ),
+      backgroundColor: defaultBackgroundColor,
       body: const _TodoView(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
@@ -37,16 +40,16 @@ class _TodoView extends ConsumerWidget {
     return Column(
       children: [
         const ListTile(
-          title: Text('Listado de invitados'),
-          subtitle: Text('Estas son las personas a invitar a la fiesta'),
+          title: Text('Listado de expedientes'),
+          subtitle: Text('Estas son los expedientes que seden ser tramitados este mes'),
         ),
 
         SegmentedButton(
           segments: const [
             ButtonSegment(value: FilterType.all, icon: Text('Todos')),
-            ButtonSegment(value: FilterType.completed, icon: Text('Invitados')),
+            ButtonSegment(value: FilterType.completed, icon: Text('Tramitados')),
             ButtonSegment(
-                value: FilterType.pending, icon: Text('No invitados')),
+                value: FilterType.pending, icon: Text('No tramitados')),
           ],
           selected: <FilterType>{currentFilter},
           onSelectionChanged: (value) {
@@ -66,7 +69,9 @@ class _TodoView extends ConsumerWidget {
 
               return SwitchListTile(
                   title: Text(todo.description),
+                  subtitle: Text('${todo.entidad}. Fecha vencimiento del expediente: ${todo.expiredDate}'),
                   value: todo.done,
+                  hoverColor: todo.expiredDate.isBefore(DateTime.now()) ? Colors.red.shade400 : Colors.blueGrey,
                   onChanged: (value) {
 
                     ref.read(todosProvider.notifier)

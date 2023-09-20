@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/screens.dart';
 
 part 'app_router.g.dart';
@@ -12,8 +11,12 @@ GoRouter appRouter(AppRouterRef ref) {
 
   return GoRouter(routes: [
     GoRoute(
-      path: '/',
-      builder: (context, state) => const DesktopScaffold(),//HomeScreenOLD(),
+      path: '/',//mandar rl mismo path y con eso saber que sccreen pintar
+      builder: (context, state) =>  ResponsiveLayout(
+        /* mobileBody:  const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(), */
+      ),
     ),
     GoRoute(
       path: '/provider',
@@ -21,23 +24,39 @@ GoRouter appRouter(AppRouterRef ref) {
     ),
     GoRoute(
       path: '/provider-router',
-      builder: (context, state) => const RouterScreen(),
+      builder: (context, state) => ResponsiveLayout(
+        /* mobileBody:  const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(), */
+      ),
     ),
     GoRoute(
       path: '/state-provider',
       builder: (context, state) => const StateProviderScreen(),
     ),
     GoRoute(
-      path: '/todo',
-      builder: (context, state) => const TodoScreen(),
+      path: '/records',
+      builder: (context, state) => ResponsiveLayout(
+        /* mobileBody:  const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(), */
+      ),
     ),
     GoRoute(
       path: '/future-provider',
-      builder: (context, state) => const FutureProviderScreen(),
+      builder: (context, state) => ResponsiveLayout(
+        /* mobileBody:  const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(), */
+      ),
     ),
     GoRoute(
       path: '/future-family-provider',
-      builder: (context, state) => const FamilyFutureScreen(),
+      builder: (context, state) => ResponsiveLayout(
+        /* mobileBody:  const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(), */
+      ),
     ),
     GoRoute(
       path: '/stream-provider',

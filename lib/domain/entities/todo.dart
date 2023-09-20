@@ -3,13 +3,18 @@
 class Todo {
 
   final String id;
-  final String description;
+  final String description;  
+  final String entidad;
   final DateTime? completedAt;
+  final DateTime expiredDate;
+
 
   Todo({
     required this.id,
     required this.description,
+    required this.entidad,
     required this.completedAt,
+    required this.expiredDate
   });
 
   bool get done {
@@ -19,11 +24,13 @@ class Todo {
   Todo copyWith({
     String? id,
     String? description,
+    String? entidad,
     DateTime? completedAt,
   }) => Todo(
     id: id ?? this.id,
     description: description ?? this.description,
-    completedAt: completedAt,
+    entidad: entidad ?? this.entidad,
+    completedAt: completedAt, expiredDate: expiredDate,
   );
 
 }
