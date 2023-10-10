@@ -36,7 +36,12 @@ final myDrawer = Drawer(
       ),
       _CustomListTile(
         icon: Icon(Icons.settings),
-        title: 'A B O U T',
+        title: 'I N M U E B L E S',
+        location: '/future-family-provider',
+      ),
+      _CustomListTile(
+        icon: Icon(Icons.settings),
+        title: 'I N V E R S I O N E S',
         location: '/future-family-provider',
       ),
       _CustomListTile(

@@ -62,5 +62,33 @@ final getrouterProvider = NotifierProvider<Getrouter, String>.internal(
 );
 
 typedef _$Getrouter = Notifier<String>;
+String _$userIdHash() => r'6c2fc43a0c2b7105bd6ed28623cf3c33857ad912';
+
+/// See also [UserId].
+@ProviderFor(UserId)
+final userIdProvider = NotifierProvider<UserId, String>.internal(
+  UserId.new,
+  name: r'userIdProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userIdHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$UserId = Notifier<String>;
+String _$tokenHash() => r'58678cdfb6a1605538f8c5f02075f1453e7f2491';
+
+/// See also [Token].
+@ProviderFor(Token)
+final tokenProvider = NotifierProvider<Token, String>.internal(
+  Token.new,
+  name: r'tokenProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$tokenHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$Token = Notifier<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

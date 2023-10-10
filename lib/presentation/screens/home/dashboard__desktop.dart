@@ -34,7 +34,7 @@ class DesktopScaffold extends ConsumerWidget {
             else if (root == '/provider-router')
               const Flexible(child: RouterScreen())
             else if (root == '/future-family-provider')
-              const Flexible(child: FamilyFutureScreen())
+              const Flexible(child: RentalHouseScreen())
             else 
               const StateProviderScreen() 
  

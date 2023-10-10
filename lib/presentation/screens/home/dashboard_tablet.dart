@@ -29,7 +29,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (context, index) {
-                    return const Box();
+                    return const Box(url: 'https://dhb3yazwboecu.cloudfront.net/429//PRODUCTO/10014_L.jpg');
                   },
                 ),
               ),

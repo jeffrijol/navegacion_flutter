@@ -47,3 +47,19 @@ class Getrouter extends _$Getrouter {
     state = name;
   }
 }
+
+
+
+@Riverpod(keepAlive: true)
+class UserId extends _$UserId {
+  @override
+  String build() => '6463446d5b67c0906eac8679'; //await DatabaseProvider().getUserId();
+
+}
+
+@Riverpod(keepAlive: true)
+class Token extends _$Token {
+  @override
+  String build() => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcmZhY2lsZGVyZWNvcmRhckBob3RtYWlsLmNvbSIsImlhdCI6MTY5Njg0MTk0MiwiZXhwIjoxNjk4MDUxNTQyfQ.B0gxJguVy6j43owt15Bu25iOKhdzF67dEP0pLo0JvsM';//await DatabaseProvider().getToken();
+  
+}

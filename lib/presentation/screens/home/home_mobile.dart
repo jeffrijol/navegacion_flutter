@@ -21,7 +21,7 @@ class HomeMobile extends StatelessWidget {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
-                    return const Box();
+                    return const Box(url: 'https://dhb3yazwboecu.cloudfront.net/429//PRODUCTO/10014_L.jpg');
                   },
                 ),
               ),

@@ -11,3 +11,4 @@ export 'home/dashboard__desktop.dart';
 export 'home/dashboard__mobile.dart';
 export 'responsive_layout.dart';
 export 'home/dashboard_tablet.dart';
+export 'rental_houses/rental_houses_screen.dart';
