@@ -76,7 +76,7 @@ final userIdProvider = NotifierProvider<UserId, String>.internal(
 );
 
 typedef _$UserId = Notifier<String>;
-String _$tokenHash() => r'58678cdfb6a1605538f8c5f02075f1453e7f2491';
+String _$tokenHash() => r'77382b082972c986e80c4940b78ce9768f5b99e1';
 
 /// See also [Token].
 @ProviderFor(Token)

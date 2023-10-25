@@ -7,8 +7,7 @@ class HomeMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
       children: [
         
             // first 4 boxes in grid
@@ -21,7 +20,7 @@ class HomeMobile extends StatelessWidget {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
                   itemBuilder: (context, index) {
-                    return const Box(url: 'https://dhb3yazwboecu.cloudfront.net/429//PRODUCTO/10014_L.jpg');
+                    return const Box();
                   },
                 ),
               ),

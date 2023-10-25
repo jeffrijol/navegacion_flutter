@@ -1,4 +1,3 @@
-
 import 'package:area_trabajo/presentation/screens/home/home_desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,13 +6,17 @@ import '../../providers/providers.dart';
 import '../../widgets/widgets.dart';
 import '../screens.dart';
 
-class DesktopScaffold extends ConsumerWidget {
-  const DesktopScaffold({Key? key}) : super(key: key);
+class DashboardDesktop extends ConsumerWidget {
+  final Widget widgetBody;
+
+  const DashboardDesktop({super.key, 
+    required this.widgetBody,
+  }); 
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final root = ref.watch(getrouterProvider);
-    print(root);
+    print('$root: DashboardDesktop');
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
@@ -24,20 +27,20 @@ class DesktopScaffold extends ConsumerWidget {
           children: [
             // open drawer
             myDrawer,
-
             if (root == '/')
-               const Flexible(child: HomeDesktop())
-            else if (root == '/future-provider')
+              const Flexible(child: HomeDesktop())
+            else Flexible(child: widgetBody) 
+            /*if (root == '/future-provider')
               const Flexible(child: FutureProviderScreen())
             else if (root == '/records')
               const Flexible(child: RecordsScreen())
             else if (root == '/provider-router')
               const Flexible(child: RouterScreen())
-            else if (root == '/future-family-provider')
+            else if (root == '/rental_house-provider')
               const Flexible(child: RentalHouseScreen())
-            else 
-              const StateProviderScreen() 
- 
+            else
+              const StateProviderScreen() */
+
             // first half of page
             /* Expanded(
               flex: 2,
@@ -102,7 +105,6 @@ class DesktopScaffold extends ConsumerWidget {
                 ],
               ),
             ),  */
-           
           ],
         ),
       ),

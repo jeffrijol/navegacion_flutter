@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Box extends StatelessWidget {
-  final String url;
+  //final String url;
 
   const Box({super.key, 
-    required this.url,
+    //required this.url,
   });
 
   @override
@@ -13,10 +13,10 @@ class Box extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Container(
         decoration: BoxDecoration(
-         image:  DecorationImage(
+         /* image:  DecorationImage(
             image: NetworkImage(url),
             fit: BoxFit.cover,
-          ),  //DecorationImage
+          ), */  //DecorationImage
           border: Border.all(
             color: Colors.grey,
             width: 4,

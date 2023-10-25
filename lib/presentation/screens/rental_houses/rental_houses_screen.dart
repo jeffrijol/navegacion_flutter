@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:animate_do/animate_do.dart';
 import '../../../config/config.dart';
 import '../../providers/providers.dart';
 import '../../widgets/widgets_constants.dart';
@@ -11,10 +11,7 @@ class RentalHouseScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        title: const Text('Bienes Inmuebles'),//Text('State Provider + Providers'),
-      ),
+      //appBar: myAppBar,
       backgroundColor: defaultBackgroundColor,
       body: const _RentalHouseView(),
       floatingActionButton: FloatingActionButton(
@@ -38,23 +35,48 @@ class _RentalHouseView extends ConsumerWidget {
 
     return Column(
       children: [
-        const ListTile(
-          title: Text('Listado de expedientes'),
-          subtitle: Text('Estas son los expedientes que seden ser tramitados este mes'),
+        ListTile(
+          titleTextStyle: headlineSecondaryTextStyle,
+          subtitleTextStyle: subtitleTextStyle,
+          title: const Text('Listado de expedientes'),
+          subtitle: const Text(
+              'Estas son los expedientes que seden ser tramitados este mes'),
         ),
-
+  
         SegmentedButton(
           segments: const [
-            ButtonSegment(value: FilterRHType.all, icon: Text('Todos')),
-            ButtonSegment(value: FilterRHType.isActive, icon: Text('Alquilados')),
             ButtonSegment(
-                value: FilterRHType.notActive, icon: Text('No alquilados')),
+                value: FilterRHType.all,
+                label: Text('Todos'),
+                icon: Icon(Icons.all_inbox)),
+            ButtonSegment(
+                value: FilterRHType.isActive, label: Text('Alquilados'),
+                icon: Icon(Icons.key_sharp)),
+            ButtonSegment(
+                value: FilterRHType.notActive, label: Text('No alquilados'),
+                icon: Icon(Icons.key_off_outlined)),
           ],
+          selectedIcon: const Icon(Icons.check_circle),
+          showSelectedIcon: true,
           selected: <FilterRHType>{currentFilter},
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateColor.resolveWith((Set<MaterialState> states) {
+              return states.contains(MaterialState.selected)
+                  ? Colors.teal
+                  : Colors.white;
+            }),
+            foregroundColor:
+                MaterialStateColor.resolveWith((Set<MaterialState> states) {
+              return states.contains(MaterialState.selected)
+                  ? Colors.white
+                  : Colors.teal;
+            }),
+          ),
           onSelectionChanged: (value) {
-             ref
+            ref
                 .read(rentalHouseCurrentFilterProvider.notifier)
-                .setCurrentFilter(value.first); 
+                .setCurrentFilter(value.first);
           },
         ),
         const SizedBox(height: 5),
@@ -66,17 +88,50 @@ class _RentalHouseView extends ConsumerWidget {
             itemBuilder: (context, index) {
               final rentalHouse = rentalHouses[index];
 
-              return SwitchListTile(
+              return FadeInRightBig(
+                child: ListTile(
+                    selectedTileColor: Colors.lightGreenAccent,
+                    selected: false,
+                    leading: CircleAvatar(
+                      backgroundColor: rentalHouse.isActive
+                          ? const Color(0xFF3E3E61)
+                          : Colors.grey,
+                      child: rentalHouse.type == 'Casa'
+                          ? const Icon(Icons.home_filled)
+                          : const Icon(Icons.apartment),
+                    ),
+                    subtitle: RichText(
+                        text: TextSpan(style: listSubTittleTextStyle, children: [
+                      TextSpan(text: rentalHouse.address),
+                      TextSpan(text: rentalHouse.type),
+                      TextSpan(text: rentalHouse.services.first.name),
+                    ])),
+                    title: RichText(
+                      text: TextSpan(
+                        style: listTittleTextStyle,
+                        text: rentalHouse.managedByUser,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text:
+                                  '  ${rentalHouse.services.first.provider}   Emitida el: ${rentalHouse.constructionDate.toString().substring(0, 10)}'),
+                        ],
+                      ),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () async {},
+                      icon: const Icon(Icons.send),
+                      color: Colors.teal,
+                    )),
+              );
+              /* SwitchListTile(
                   title: Text(rentalHouse.address),
                   subtitle: Text('${rentalHouse.type}. Fecha vencimiento del expediente: ${rentalHouse.constructionDate}'),
                   value: rentalHouse.isActive,
-                  //hoverColor: rentalHouse.constructionDate.isBefore(DateTime.now()) ? Colors.red.shade400 : Colors.blueGrey,
+                  hoverColor: rentalHouse.constructionDate.isBefore(DateTime.now()) ? Colors.red.shade400 : Colors.blueGrey,
                   onChanged: (value) {
-
-                    /* ref.read(todosProvider.notifier)
-                      .toggleTodo(rentalHouse.id); */
-
-                });
+                     ref.read(todosProvider.notifier)
+                      .toggleTodo(rentalHouse.id); 
+                }); */
             },
           ),
         )

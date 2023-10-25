@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../config/config.dart';
 import '../providers/providers.dart';
 
 final defaultBackgroundColor = Colors.grey[300];
-final appBarColor = Colors.grey[900];
+final appBarColor = Colors.grey[300];
 final myAppBar = AppBar(
+  //automaticallyImplyLeading: false,
   backgroundColor: appBarColor,
   title: const Text(' '),
   centerTitle: false,
@@ -37,7 +39,7 @@ final myDrawer = Drawer(
       _CustomListTile(
         icon: Icon(Icons.settings),
         title: 'I N M U E B L E S',
-        location: '/future-family-provider',
+        location: '/rental_house-provider',
       ),
       _CustomListTile(
         icon: Icon(Icons.settings),
@@ -69,10 +71,10 @@ class _CustomListTile extends ConsumerWidget {
     return Padding(
       padding: tilePadding,
       child: ListTile(
-        title: Text(
-          title,
-          style: drawerTextColor,
-        ),
+        title: RichText(
+                        text: TextSpan(style: menuTextStyle, children: [
+                      TextSpan(text: title),
+                    ])),
         leading: icon,
         onTap: () {
           ref.read(getrouterProvider.notifier).changeRouter(location);

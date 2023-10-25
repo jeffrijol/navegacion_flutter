@@ -25,7 +25,7 @@ class HomeDesktop extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4),
                     itemBuilder: (context, index) {
-                      return const Box(url: 'https://dhb3yazwboecu.cloudfront.net/429//PRODUCTO/10014_L.jpg');
+                      return const Box();
                     },
                   ),
                 ),
