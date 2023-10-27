@@ -17,8 +17,8 @@ class DashboardTablet  extends ConsumerWidget {
     print('$root: DashboardTablet');
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
-      appBar: myAppBar,
-      drawer: myDrawer,
+      appBar: myAppBar,//CustomAppBar(tittle: 'DashboardDesktop', centerTitle: false, automaticallyImplyLeading: false, backgroundColor: Colors.grey[300]),
+      drawer: const MyDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: root == '/' ? const Flexible(child: HomeTablet()) : Column(

@@ -60,6 +60,6 @@ class UserId extends _$UserId {
 @Riverpod(keepAlive: true)
 class Token extends _$Token {
   @override
-  String build() => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcmZhY2lsZGVyZWNvcmRhckBob3RtYWlsLmNvbSIsImlhdCI6MTY5ODA0ODg2MSwiZXhwIjoxNjk5MjYyMDYxfQ.TMgR9rQNqYMxAQm2Pgfm330xUeUxRg8uDe-mu6qQlTA';//await DatabaseProvider().getToken();
+  String build() => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcmZhY2lsZGVyZWNvcmRhckBob3RtYWlsLmNvbSIsImlhdCI6MTY5ODMxNzEyOSwiZXhwIjoxNjk5NTMwMzI5fQ.3TLXnZXWFBtn4ddn6R9-GFkHaC58oUxnjbhqg7jjYnM';//await DatabaseProvider().getToken();
   
 }

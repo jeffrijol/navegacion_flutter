@@ -12,19 +12,26 @@ final myAppBar = AppBar(
   backgroundColor: appBarColor,
   title: const Text(' '),
   centerTitle: false,
-);
+); 
 final drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
-final myDrawer = Drawer(
-  backgroundColor: Colors.grey[300],
-  elevation: 0,
+
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor:  Colors.grey[300],
+      elevation: 0,
   child: const Column(
     children: [
       _DrawerHeader(
         icon: Icon(Icons.business_center),
-        location: '/', iconSize: 64,
+        location: '/',
+        iconSize: 64,
       ),
       _CustomListTile(
         icon: Icon(Icons.home),
@@ -53,7 +60,9 @@ final myDrawer = Drawer(
       ),
     ],
   ),
-);
+    );
+  }
+}
 
 class _CustomListTile extends ConsumerWidget {
   final String title;
@@ -72,9 +81,9 @@ class _CustomListTile extends ConsumerWidget {
       padding: tilePadding,
       child: ListTile(
         title: RichText(
-                        text: TextSpan(style: menuTextStyle, children: [
-                      TextSpan(text: title),
-                    ])),
+            text: TextSpan(style: menuTextStyle, children: [
+          TextSpan(text: title),
+        ])),
         leading: icon,
         onTap: () {
           ref.read(getrouterProvider.notifier).changeRouter(location);
@@ -98,9 +107,13 @@ class _DrawerHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return IconButton(onPressed: () {
-          ref.read(getrouterProvider.notifier).changeRouter(location);
-          context.push(location);
-        }, icon: icon, iconSize: iconSize,);
+    return IconButton(
+      onPressed: () {
+        ref.read(getrouterProvider.notifier).changeRouter(location);
+        context.push(location);
+      },
+      icon: icon,
+      iconSize: iconSize,
+    );
   }
 }

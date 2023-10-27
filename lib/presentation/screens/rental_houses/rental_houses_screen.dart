@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:animate_do/animate_do.dart';
 import '../../../config/config.dart';
 import '../../providers/providers.dart';
-import '../../widgets/widgets_constants.dart';
+import '../../widgets/drawer_menu.dart';
 
 class RentalHouseScreen extends ConsumerWidget {
   const RentalHouseScreen({super.key});
@@ -79,7 +79,7 @@ class _RentalHouseView extends ConsumerWidget {
                 .setCurrentFilter(value.first);
           },
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 5), 
 
         /// Listado de personas a invitar
         Expanded(
@@ -123,15 +123,6 @@ class _RentalHouseView extends ConsumerWidget {
                       color: Colors.teal,
                     )),
               );
-              /* SwitchListTile(
-                  title: Text(rentalHouse.address),
-                  subtitle: Text('${rentalHouse.type}. Fecha vencimiento del expediente: ${rentalHouse.constructionDate}'),
-                  value: rentalHouse.isActive,
-                  hoverColor: rentalHouse.constructionDate.isBefore(DateTime.now()) ? Colors.red.shade400 : Colors.blueGrey,
-                  onChanged: (value) {
-                     ref.read(todosProvider.notifier)
-                      .toggleTodo(rentalHouse.id); 
-                }); */
             },
           ),
         )

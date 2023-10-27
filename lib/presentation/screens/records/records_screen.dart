@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../config/config.dart';
 import '../../providers/providers.dart';
-import '../../widgets/widgets_constants.dart';
+import '../../widgets/drawer_menu.dart';
 
 class RecordsScreen extends ConsumerWidget {
   const RecordsScreen({super.key});
